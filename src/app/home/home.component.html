@@ -24,7 +24,7 @@
     <div class="row categorisBox">
 
       <div class="col-lg-3 col-6 categorisContent" *ngFor="let data of getCategorisData">
-        <a routerLink="/">
+        <a [routerLink]="['product-page', data.code]">
           <img src="{{data.img}}" alt="/">
           <h4>{{data.name}}</h4>
         </a>
@@ -41,12 +41,12 @@
 
     <div class="row productBox">
       <p>
-        <a class="float-start" routerLink="">Best of appliance</a>
-        <a class="float-end" routerLink=""><i class="bi bi-arrow-right-circle"></i></a>
+        <a class="float-start" [routerLink]="['/product-page','appliance']">Best of appliance</a>
+        <a class="float-end" [routerLink]="['/product-page','appliance']"><i class="bi bi-arrow-right-circle"></i></a>
       </p>
 
       <div class="col-lg-3 mt-5" *ngFor="let data of getApplianceProductData; index as i">
-        <a routerLink="" class="productLink">
+        <a [routerLink]="['/product-detail',data.pdCategory,data.pdId]" class="productLink">
           <div class="productContent" *ngIf="i<=3">
             <div class="productImg">
               <img src={{data.pdImg}} alt="">
@@ -60,5 +60,30 @@
     </div>
   </div>
   <!-- show appliance product end  -->
+
+   <!-- show appliance product  -->
+   <div class="container mt-3 mb-3">
+
+    <div class="row productBox">
+      <p>
+        <a class="float-start" [routerLink]="['/product-page','fashion']">Best of fashion</a>
+        <a class="float-end" [routerLink]="['/product-page','fashion']"><i class="bi bi-arrow-right-circle"></i></a>
+      </p>
+
+      <div class="col-lg-3 mt-5" *ngFor="let data of getFashionProductData; index as i">
+        <a [routerLink]="['/product-detail',data.pdCategory,data.pdId]" class="productLink">
+          <div class="productContent" *ngIf="i<=3">
+            <div class="productImg">
+              <img src={{data.pdImg}} alt="">
+            </div>
+
+            <h4>{{data.pdName}}</h4>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <!-- show fashion product end  -->
   <!-- show product end  -->
 </main>
